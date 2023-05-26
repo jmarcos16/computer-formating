@@ -82,4 +82,18 @@ test('validate if description is string', function () {
     assertDatabaseCount('assignments', 0);
 });
 
+test('validate if description supported max 255 characters', function () {
+
+    $user= User::factory()->create();
+    actingAs($user);
+
+    $response = post(route('assignment.store'), [
+        'name' => 'Assignment 1',
+        'description' => '*'.str_repeat('a', 256),
+    ]);
+
+    $response->assertSessionHasErrors('description', 'The description may not be greater than 255 characters.');
+    assertDatabaseCount('assignments', 0);
+});
+
 
