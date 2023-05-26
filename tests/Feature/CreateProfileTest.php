@@ -6,6 +6,7 @@ use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
+
 it('should be able create a assignment.', function () {
     $user= User::factory()->create();
     actingAs($user);
@@ -67,5 +68,18 @@ test('validate if supported max 255 characters', function () {
     assertDatabaseCount('assignments', 0);
 });
 
+test('validate if description is string', function () {
+
+    $user= User::factory()->create();
+    actingAs($user);
+
+    $response = post(route('assignment.store'), [
+        'name' => 'Assignment 1',
+        'description' => 123,
+    ]);
+
+    $response->assertSessionHasErrors('description', 'The description must be a string.');
+    assertDatabaseCount('assignments', 0);
+});
 
 
