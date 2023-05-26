@@ -12,7 +12,7 @@ class AssingnmentController extends Controller
 
 
         $request->validate([
-            'name' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:255'],
         ]);
 
 

@@ -33,7 +33,7 @@ test('validate if name is required', function () {
         'description' => 'Description 1',
     ]);
 
-    $response->assertSessionHasErrors('name');
+    $response->assertSessionHasErrors('name', 'The name field is required.');
     assertDatabaseCount('assignments', 0);
 });
 
@@ -48,7 +48,22 @@ test('validate if name is string', function () {
         'description' => 'Description 1',
     ]);
 
-    $response->assertSessionHasErrors('name');
+    $response->assertSessionHasErrors('name', 'The name must be a string.');
+    assertDatabaseCount('assignments', 0);
+});
+
+
+test('validate if supported max 255 characters', function () {
+
+    $user= User::factory()->create();
+    actingAs($user);
+
+    $response = post(route('assignment.store'), [
+        'name' => '*'.str_repeat('a', 256),
+        'description' => 'Description 1',
+    ]);
+
+    $response->assertSessionHasErrors('name', 'The name may not be greater than 255 characters.');
     assertDatabaseCount('assignments', 0);
 });
 
