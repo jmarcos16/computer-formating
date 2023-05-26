@@ -7,6 +7,16 @@ use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\post;
 
 
+test('validate if return is ok', function () {
+    $user = User::factory()->create();
+    actingAs($user);
+
+    $response = \Pest\Laravel\get(route('assignment.create'));
+    $response->assertOk();
+    $response->assertViewIs('assignment.create');
+});
+
+
 it('should be able create a assignment.', function () {
     $user= User::factory()->create();
     actingAs($user);

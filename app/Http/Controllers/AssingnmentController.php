@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class AssingnmentController extends Controller
 {
 
+    public  function  create()
+    {
+        return view('assignment.create');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
