@@ -23,3 +23,34 @@ it('should be able create a assignment.', function () {
     ]);
 });
 
+test('validate if name is required', function () {
+
+    $user= User::factory()->create();
+    actingAs($user);
+
+    $response = post(route('assignment.store'), [
+        'name' => '',
+        'description' => 'Description 1',
+    ]);
+
+    $response->assertSessionHasErrors('name');
+    assertDatabaseCount('assignments', 0);
+});
+
+
+test('validate if name is string', function () {
+
+    $user= User::factory()->create();
+    actingAs($user);
+
+    $response = post(route('assignment.store'), [
+        'name' => 123,
+        'description' => 'Description 1',
+    ]);
+
+    $response->assertSessionHasErrors('name');
+    assertDatabaseCount('assignments', 0);
+});
+
+
+

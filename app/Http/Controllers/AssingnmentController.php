@@ -9,6 +9,13 @@ class AssingnmentController extends Controller
 {
     public function store(Request $request)
     {
+
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+
         Assignment::query()->create([
             'name' => $request->name,
             'description' => $request->description,
