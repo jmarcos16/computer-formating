@@ -12,6 +12,14 @@ class FormatationController extends Controller
      */
     public function __invoke(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|string',
+            'description' => 'nullable|string',
+            'status' => 'required|in:pending,approved,rejected',
+        ]);
+
+
         $formatation = Formatation::query()->create([
             'title' => $request->title,
             'description' => $request->description,

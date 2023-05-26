@@ -34,3 +34,17 @@ test('validade if status contains pending, approved or rejected', function () {
     $response->assertSessionHasErrors('status');
     assertDatabaseCount('formatations', 0);
 });
+
+test('validate if title is required', function () {
+    $user = \App\Models\User::factory()->create();
+    \Pest\Laravel\actingAs($user);
+
+    $response = $this->post(route('formatation.create'), [
+        'title' => '',
+        'description' => 'Formatation Test',
+        'status' => 'pending',
+    ]);
+
+    $response->assertSessionHasErrors('title');
+    assertDatabaseCount('formatations', 0);
+});
