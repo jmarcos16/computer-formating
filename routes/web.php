@@ -17,10 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('assignment.index');
 
 
 Route::post('/formatation/create', FormatationController::class)->name('formatation.create');
+
+
+Route::post('assignment/create', [\App\Http\Controllers\AssingnmentController::class, 'store'])->name('assignment.store');
 
 
 Route::get('/dashboard', function () {

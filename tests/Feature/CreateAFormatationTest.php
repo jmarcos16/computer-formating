@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\User;
+use function Pest\Laravel\actingAs;
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 
 it('should be able create a formatation', function () {
-    $user = \App\Models\User::factory()->create();
-    \Pest\Laravel\actingAs($user);
+    $user = User::factory()->create();
+    actingAs($user);
 
     $response = $this->post(route('formatation.create'), [
         'title' => 'Formatation Test',
@@ -22,8 +24,8 @@ it('should be able create a formatation', function () {
 });
 
 test('validade if status contains pending, approved or rejected', function () {
-    $user = \App\Models\User::factory()->create();
-    \Pest\Laravel\actingAs($user);
+    $user = User::factory()->create();
+    actingAs($user);
 
     $response = $this->post(route('formatation.create'), [
         'title' => 'Formatation Test',
@@ -36,8 +38,8 @@ test('validade if status contains pending, approved or rejected', function () {
 });
 
 test('validate if title is required', function () {
-    $user = \App\Models\User::factory()->create();
-    \Pest\Laravel\actingAs($user);
+    $user = User::factory()->create();
+    actingAs($user);
 
     $response = $this->post(route('formatation.create'), [
         'title' => '',
