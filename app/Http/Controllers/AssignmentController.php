@@ -24,13 +24,11 @@ class AssignmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255']
         ]);
 
         Assignment::query()->create([
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
+            'name' => $request->get('name')
         ]);
 
         return redirect()->route('assignment.index');
@@ -48,12 +46,10 @@ class AssignmentController extends Controller
 
         request()->validate([
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:255']
         ]);
 
         $assignment->update([
             'name' => request('name'),
-            'description' => request('description')
         ]);
 
         return redirect()->route('assignment.index');
