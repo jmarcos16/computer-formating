@@ -18,8 +18,8 @@ class AssignmentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'description' => $this->faker->text,
+            'name' => fake()->name(),
+            'description' => fake()->text(),
         ];
     }
 }

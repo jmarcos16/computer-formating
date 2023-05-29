@@ -19,11 +19,10 @@ class FormatationController extends Controller
             'status' => 'required|in:pending,approved,rejected',
         ]);
 
-
-        $formatation = Formatation::query()->create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'status' => $request->status,
+         Formatation::query()->create([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'status' => $request->get('status'),
         ]);
 
         return redirect()->route('dashboard');
