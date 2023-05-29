@@ -30,8 +30,8 @@ class AssignmentController extends Controller
 
 
         Assignment::query()->create([
-            'name' => $request->name,
-            'description' => $request->description,
+            'name' => $request->get('name'),
+            'description' => $request->get('description'),
         ]);
 
         return redirect()->route('assignment.index');
