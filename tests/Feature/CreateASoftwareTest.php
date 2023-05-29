@@ -18,7 +18,7 @@ it('should be able create a software', function () {
     ]);
 });
 
-test('validate if name is required', function () {
+test('validate if software name is required', function () {
     $user = \App\Models\User::factory()->create();
     \Pest\Laravel\actingAs($user);
 
@@ -29,4 +29,17 @@ test('validate if name is required', function () {
     ]);
 
     $response->assertSessionHasErrors('name', 'The name field is required.');
+});
+
+test('validate if software name is string', function () {
+    $user = \App\Models\User::factory()->create();
+    \Pest\Laravel\actingAs($user);
+
+    $response = $this->post(route('software.store'), [
+        'name'        => 123,
+        'description' => 'Software Description',
+        'link'        => 'https://software.com',
+    ]);
+
+    $response->assertSessionHasErrors('name', 'The name must be a string.');
 });
