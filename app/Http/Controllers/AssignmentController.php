@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class AssignmentController extends Controller
 {
 
+    public function index() : \Illuminate\Contracts\View\View
+    {
+        return view('assignment.index', [
+            'assignments' => Assignment::query()->paginate(10)
+        ]);
+    }
+
+
     public  function  create() : \Illuminate\Contracts\View\View
     {
         return view('assignment.create');

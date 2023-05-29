@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::post('/formatation/create', FormatationController::class)->name('formatation.create');
 
+Route::get('assignment', [AssignmentController::class, 'index'])->name('assignment.index');
 Route::get('assignment/create', [AssignmentController::class, 'create'])->name('assignment.create');
 Route::post('assignment/create', [AssignmentController::class, 'store'])->name('assignment.store');
 
