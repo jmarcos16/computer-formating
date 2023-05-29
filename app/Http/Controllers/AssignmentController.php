@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Assignment;
 use Illuminate\Http\Request;
 
-class AssingnmentController extends Controller
+class AssignmentController extends Controller
 {
 
-    public  function  create()
+    public  function  create() : \Illuminate\Contracts\View\View
     {
         return view('assignment.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request) : \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
