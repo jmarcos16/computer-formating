@@ -12,6 +12,19 @@ test('validate return view edit assignment', function () {
         ->assertSee($assignment->description);
 });
 
-//it('shwo', function () {
-//
-//});
+it('should be able update assignment in database', function () {
+    $user = \App\Models\User::factory()->create();
+    \Pest\Laravel\actingAs($user);
+
+    $assignment = \App\Models\Assignment::factory()->create();
+
+    $this->put(route('assignment.update', $assignment->id), [
+        'name' => 'New name',
+        'description' => 'New description'
+    ])->assertRedirect(route('assignment.index'));
+
+    $this->assertDatabaseHas('assignments', [
+        'name' => 'New name',
+        'description' => 'New description'
+    ]);
+});
