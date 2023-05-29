@@ -18,12 +18,6 @@
                                           :value="$assignment->name" placeholder="Title Assignment"/>
                             <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                         </div>
-                        <div class="my-2">
-                            <x-input-label for="description" value="Description"/>
-                            <x-text-input id="description" class="block mt-1 w-full" type="text" name="description"
-                                          :value="$assignment->description" placeholder="Description Assignment"/>
-                            <x-input-error :messages="$errors->get('description')" class="mt-2"/>
-                        </div>
 
                         <x-primary-button class="my-2">
                             {{ __('Update') }}
