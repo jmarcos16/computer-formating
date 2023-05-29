@@ -12,17 +12,16 @@ class FormatationController extends Controller
      */
     public function __invoke(Request $request)
     {
-
         $request->validate([
-            'title' => 'required|string',
+            'title'       => 'required|string',
             'description' => 'nullable|string',
-            'status' => 'required|in:pending,approved,rejected',
+            'status'      => 'required|in:pending,approved,rejected',
         ]);
 
-         Formatation::query()->create([
-            'title' => $request->get('title'),
+        Formatation::query()->create([
+            'title'       => $request->get('title'),
             'description' => $request->get('description'),
-            'status' => $request->get('status'),
+            'status'      => $request->get('status'),
         ]);
 
         return redirect()->route('dashboard');

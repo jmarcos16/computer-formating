@@ -7,27 +7,24 @@ use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
-
-    public function index() : \Illuminate\Contracts\View\View
+    public function index(): \Illuminate\Contracts\View\View
     {
         return view('assignment.index', [
-            'assignments' => Assignment::query()->paginate(10)
+            'assignments' => Assignment::query()->paginate(1)
         ]);
     }
 
-
-    public  function  create() : \Illuminate\Contracts\View\View
+    public function create(): \Illuminate\Contracts\View\View
     {
         return view('assignment.create');
     }
 
-    public function store(Request $request) : \Illuminate\Http\RedirectResponse
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:255']
         ]);
-
 
         Assignment::query()->create([
             'name' => $request->get('name'),
@@ -35,5 +32,12 @@ class AssignmentController extends Controller
         ]);
 
         return redirect()->route('assignment.index');
+    }
+
+    public function edit(Assignment $assignment): \Illuminate\Contracts\View\View
+    {
+        return view('assignment.edit', [
+            'assignment' => $assignment
+        ]);
     }
 }

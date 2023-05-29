@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    if(app()->isLocal()){
+    if (app()->isLocal()) {
         $user = \App\Models\User::factory()->create();
         auth()->login($user);
     }
@@ -21,6 +21,8 @@ Route::post('/formatation/create', FormatationController::class)->name('formatat
 Route::get('assignment', [AssignmentController::class, 'index'])->name('assignment.index');
 Route::get('assignment/create', [AssignmentController::class, 'create'])->name('assignment.create');
 Route::post('assignment/create', [AssignmentController::class, 'store'])->name('assignment.store');
+Route::get('assignment/edit/{assignment}', [AssignmentController::class, 'edit'])->name('assignment.edit');
+Route::put('assignment/edit/{assignment}', [AssignmentController::class, 'update'])->name('assignment.update');
 
 
 Route::get('/dashboard', function () {
@@ -33,5 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';
