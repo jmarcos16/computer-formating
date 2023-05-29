@@ -45,6 +45,12 @@ class AssignmentController extends Controller
 
     public function update(Assignment $assignment): RedirectResponse
     {
+
+        request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:255']
+        ]);
+
         $assignment->update([
             'name' => request('name'),
             'description' => request('description')
