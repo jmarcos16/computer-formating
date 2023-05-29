@@ -12,7 +12,7 @@ class AssignmentController extends Controller
     public function index(): View
     {
         return view('assignment.index', [
-            'assignments' => Assignment::query()->paginate(1)
+            'assignments' => Assignment::query()->paginate(10)
         ]);
     }
 
@@ -52,6 +52,12 @@ class AssignmentController extends Controller
             'name' => request('name'),
         ]);
 
+        return redirect()->route('assignment.index');
+    }
+
+    public function destroy(Assignment $assignment): RedirectResponse
+    {
+        $assignment->delete();
         return redirect()->route('assignment.index');
     }
 }

@@ -23,6 +23,7 @@ Route::get('assignment/create', [AssignmentController::class, 'create'])->name('
 Route::post('assignment/create', [AssignmentController::class, 'store'])->name('assignment.store');
 Route::get('assignment/edit/{assignment}', [AssignmentController::class, 'edit'])->name('assignment.edit');
 Route::put('assignment/edit/{assignment}', [AssignmentController::class, 'update'])->name('assignment.update');
+Route::delete('assignment/delete/{assignment}', [AssignmentController::class, 'destroy'])->name('assignment.destroy');
 
 
 Route::get('/dashboard', function () {
