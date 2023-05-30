@@ -121,3 +121,12 @@ test('validate if software link is max 255 characters', function () {
 
     $response->assertSessionHasErrors('link', 'The link must not be greater than 255 characters.');
 });
+
+test('validate return view create software', function () {
+    $user = \App\Models\User::factory()->create();
+    \Pest\Laravel\actingAs($user);
+
+    $response = $this->get(route('software.create'));
+
+    $response->assertViewIs('software.create');
+});

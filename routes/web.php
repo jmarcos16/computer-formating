@@ -26,6 +26,7 @@ Route::delete('assignment/delete/{assignment}', [AssignmentController::class, 'd
 
 Route::controller(SoftwareController::class)->group(function () {
     Route::get('software', 'index')->name('software.index');
+    Route::get('software/create', 'create')->name('software.create');
     Route::post('software/create', 'store')->name('software.store');
 });
 

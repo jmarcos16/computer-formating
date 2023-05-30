@@ -3,10 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Software;
+use Illuminate\Contracts\View\View;
 
 class SoftwareController extends Controller
 {
-    public function store()
+    public function index() : View
+    {
+        return view('software.index', [
+            'softwares' => Software::query()
+            ->latest()
+            ->paginate(10),
+        ]);
+    }
+
+    public function create() : View
+    {
+        return view('software.create');
+    }
+
+    public function store() : \Illuminate\Http\RedirectResponse
     {
         request()->validate([
             'name'        => ['required', 'string', 'max:55'],
