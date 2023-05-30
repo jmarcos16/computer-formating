@@ -24,7 +24,7 @@
                                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Assingment Name
+                                    Assignment Name
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Last Updated
@@ -52,7 +52,7 @@
                                     </td>
                                     <td class="px-6 py-4 text-right">
                                         <div class="flex items-center gap-2 justify-end">
-                                            <a href="{{route('assignment.show', $item->id)}}"
+                                            <a href="{{route('assignment.edit', $item->id)}}"
                                                class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Management</a>
                                         </div>
                                     </td>

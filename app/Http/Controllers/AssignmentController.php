@@ -35,18 +35,11 @@ class AssignmentController extends Controller
         return redirect()->route('assignment.index');
     }
 
-    public function show(Assignment $assignment): View
-    {
-        return view('assignment.show', [
-            'assignment' => $assignment,
-            'softwares'  => Software::all()
-        ]);
-    }
-
     public function edit(Assignment $assignment): View
     {
         return view('assignment.edit', [
-            'assignment' => $assignment
+            'assignment' => $assignment,
+            'softwares'  => Software::all()
         ]);
     }
 
