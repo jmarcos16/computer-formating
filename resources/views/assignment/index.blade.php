@@ -38,26 +38,34 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($assignments as $item)
+                            @if($assignments->count() > 0)
+                                @foreach($assignments as $item)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{$item->name}}
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {{$item->updated_at}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{$item->created_at}}
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <div class="flex items-center gap-2 justify-end">
+                                                <a href="{{route('assignment.edit', $item->id)}}"
+                                                   class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Management</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        {{$item->name}}
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        {{$item->updated_at}}
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        {{$item->created_at}}
-                                    </td>
-                                    <td class="px-6 py-4 text-right">
-                                        <div class="flex items-center gap-2 justify-end">
-                                            <a href="{{route('assignment.edit', $item->id)}}"
-                                               class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Management</a>
-                                        </div>
+                                    <td colspan="4" class="px-6 py-4 text-center">
+                                        <span class="dark:text-gray-200">No data found</span>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endif
                             </tbody>
                         </table>
                         <div class="px-2 py-2">

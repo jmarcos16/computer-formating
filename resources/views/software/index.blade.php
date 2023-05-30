@@ -22,22 +22,23 @@
 
                             <thead
                                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Software Name
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Description
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Link
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        <span class="sr-only">Edit</span>
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Software Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Description
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Link
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Edit</span>
+                                </th>
+                            </tr>
                             </thead>
                             <tbody>
+                            @if($softwares->count() > 0)
                                 @foreach ($softwares as $item)
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                         <th scope="row"
@@ -67,6 +68,13 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                            @else
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <td colspan="4" class="px-6 py-4 text-center">
+                                        No data found
+                                    </td>
+                                </tr>
+                            @endif
                             </tbody>
                         </table>
                         <div class="px-2 py-2">

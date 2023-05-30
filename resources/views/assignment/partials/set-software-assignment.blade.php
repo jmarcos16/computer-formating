@@ -18,7 +18,9 @@
             <x-primary-button class="h-10">
                 {{ __('Add Software') }}
             </x-primary-button>
+            <x-input-error :messages="$errors->get('software_id')" class="mt-2"/>
         </form>
+
     </header>
 
     <div class="mt-2">
