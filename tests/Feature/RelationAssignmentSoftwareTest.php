@@ -5,7 +5,7 @@ use App\Models\Software;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 
-it('should be able relation software in assignment', function () {
+it('it should be able relation a software with a assignments.', function () {
     $user = User::factory()->create();
     actingAs($user);
 
