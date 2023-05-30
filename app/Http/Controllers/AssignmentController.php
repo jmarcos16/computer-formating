@@ -24,7 +24,7 @@ class AssignmentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255']
+            'name' => ['required', 'string', 'max:255'],
         ]);
 
         Assignment::query()->create([
@@ -43,7 +43,6 @@ class AssignmentController extends Controller
 
     public function update(Assignment $assignment): RedirectResponse
     {
-
         request()->validate([
             'name' => ['required', 'string', 'max:255'],
         ]);
@@ -58,6 +57,7 @@ class AssignmentController extends Controller
     public function destroy(Assignment $assignment): RedirectResponse
     {
         $assignment->delete();
+
         return redirect()->route('assignment.index');
     }
 }
