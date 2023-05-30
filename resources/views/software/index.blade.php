@@ -53,17 +53,7 @@
                                         </td>
                                         <td class="px-6 py-4 text-right">
                                             <div class="flex items-center gap-2 justify-end">
-                                                {{-- <a href="{{ route('software.edit', $item->id) }}"
-                                                    class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Edit</a>
-                                                <form method="post"
-                                                    action="{{ route('software.destroy', $item->id) }}">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit"
-                                                        class="px-3 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                        Delete
-                                                    </button>
-                                                </form> --}}
+                                                
                                             </div>
                                         </td>
                                     </tr>
