@@ -11,10 +11,9 @@ class SoftwareStoreController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Assignment $assignment)
+    public function __invoke(Assignment $assignment): \Illuminate\Http\RedirectResponse
     {
         $assignment->setSoftware(request('software_id'));
-
         return back();
     }
 }

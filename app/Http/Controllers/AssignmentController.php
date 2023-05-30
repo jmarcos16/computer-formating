@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Models\Software;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -32,6 +33,14 @@ class AssignmentController extends Controller
         ]);
 
         return redirect()->route('assignment.index');
+    }
+
+    public function show(Assignment $assignment): View
+    {
+        return view('assignment.show', [
+            'assignment' => $assignment,
+            'softwares'  => Software::all()
+        ]);
     }
 
     public function edit(Assignment $assignment): View
